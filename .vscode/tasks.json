@@ -1,0 +1,6 @@
+{
+  // https://code.visualstudio.com/docs/editor/tasks
+  // 如果有多个任务，并且是不同的任务，记得分组，命名，
+  "version": "2.0.0",
+  "tasks": []
+}

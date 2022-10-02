@@ -1,0 +1,58 @@
+{
+  "files.autoSave": "onFocusChange",
+  // 保存时格式化
+  "editor.formatOnSave": false,
+  // 粘贴时格式化
+  "editor.formatOnType": false,
+  "editor.fontFamily": "Fira Code", //后边的引号中写上要设置的字体类型，个人比较喜欢Fira Code
+  "editor.fontLigatures": true, //这个控制是否启用字体连字，true启用，false不启用，这里选择启用
+  "editor.fontSize": 16, //设置字体大小，这个不多说都明白
+  "editor.fontWeight": "normal", //这个设置字体粗细，可选normal,bold,"100"~"900"等，选择合适的就行
+  "editor.wordWrapColumn": 255, // 控制转折行
+  // 自动格式化（关闭vscode自带的格式化）
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
+  "html.format.enable": false,
+  "css.format.enable": false,
+  // 开启自动导入
+  "javascript.suggest.autoImports": true,
+  // 检查npm是否安装
+  "typescript.check.npmIsInstalled": true,
+  // 感知
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "off"
+  },
+  "editor.suggestOnTriggerCharacters": true,
+  // 设置缩进
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  // 文件默认编码格式
+  "files.encoding": "utf8",
+  // 开启自动换行
+  "editor.wordWrap": "on",
+  // 更改行号颜色
+  "workbench.colorCustomizations": {
+    "editorLineNumber.foreground": "#daa520"
+  },
+  // 更新导入文件的路径
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  // 自动HTML更新标签
+  "editor.linkedEditing": true,
+  // 验证html嵌入的js代码
+  "html.validate.scripts": true,
+  // 验证html嵌入的css代码
+  "html.validate.styles": true,
+  // 在JS中使用emmet缩写
+  "emmet.includeLanguages": {
+    "javascript": "html",
+    "typescript": "html"
+  },
+  // 启动类型检查
+  "js/ts.implicitProjectConfig.checkJs": true,
+  // 只有当需要时才开启，debug
+  "debug.javascript.autoAttachFilter": "smart",
+  "python.formatting.provider": "yapf",
+  "git.ignoreLimitWarning": true,
+}
