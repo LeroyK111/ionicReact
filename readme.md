@@ -37,11 +37,56 @@ https://marketplace.visualstudio.com/items?itemName=ionic.ionic
 $ npm uninstall -g ionic
 $ npm install -g @ionic/cli
 
-# 安装模板
+# 安装模板，可以通过ionic start --help
 ionic start myApp tabs --type react
 
 # 启动命令
 $ ionic start
 $ ionic serve
+```
+
+安装完毕
+
+```
+进入项目
+cd .\ionicReact
+启动服务
+ionic serve
+构建电容器
+ionic capacitor add 
+生成图标和启动画面
+cordova-res --skip-config --copy
+原生组件
+https://ion.link/docs
+企业级功能
+https://ion.link/enterprise-edition
+```
+
+### 基于ionic的高阶HOC组件
+
+#### root根组件App.tsx
+
+**常规的react组件必须包装才能使用。**每个项目只能存在一个IonApp根组件
+
+![image-20221003193526602](readme.assets/image-20221003193526602.png)
+
+#### pages页面组件Tab.tsx
+
+每个视图必须包含一个`IonPage`组件。没有它，页面转换将无法正常工作。有关详细信息，请参阅[IonPage 文档](https://ionicframework.com/docs/react/navigation#ionpage)。
+
+![image-20221003195051558](readme.assets/image-20221003195051558.png)
+
+#### 原生组件components
+
+![image-20221003194929069](readme.assets/image-20221003194929069.png)
+
+## 构建原生App
+
+```
+# 添加电容器
+ionic integrations enable capacitor
+# 开始构建
+ionic build
+# w
 ```
 

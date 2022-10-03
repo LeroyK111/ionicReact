@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@capacitor/app": "4.0.1",
-    "@capacitor/core": "4.3.0",
-    "@capacitor/haptics": "4.0.1",
-    "@capacitor/keyboard": "4.0.1",
-    "@capacitor/status-bar": "4.0.1",
+    "@capacitor/app": "^4.0.1",
+    "@capacitor/core": "^4.3.0",
+    "@capacitor/haptics": "^4.0.1",
+    "@capacitor/keyboard": "^4.0.1",
+    "@capacitor/status-bar": "^4.0.1",
     "@ionic/react": "^6.0.0",
     "@ionic/react-router": "^6.0.0",
     "@testing-library/jest-dom": "^5.11.9",
@@ -50,7 +50,17 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "plugins": [
+      "react-hooks",
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": 0
+    }
   },
   "browserslist": {
     "production": [
