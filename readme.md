@@ -87,6 +87,12 @@ https://ion.link/enterprise-edition
 ionic integrations enable capacitor
 # 开始构建
 ionic build
-# w
+# 添加平台
+ionic capacitor add android
+ionic capacitor add ios
+# 调试
+
+# 打包
+
 ```
 
