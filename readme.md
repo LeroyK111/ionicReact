@@ -33,10 +33,14 @@ https://marketplace.visualstudio.com/items?itemName=ionic.ionic
 ## 基于react开发App
 
 ```
-安装脚手架，同样是基于脚手架开发的。
+# 安装脚手架，同样是基于脚手架开发的。
 $ npm uninstall -g ionic
 $ npm install -g @ionic/cli
-启动命令
+
+# 安装模板
+ionic start myApp tabs --type react
+
+# 启动命令
 $ ionic start
 $ ionic serve
 ```
