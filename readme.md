@@ -2,6 +2,8 @@
 
 归根结底，它只是 React。Ionic React 使用开放的 Web 标准和内置的浏览器功能，因此它与数以百万计的 Web 库中的任何一个都兼容。
 
+
+
 官网地址：https://ionicframework.com/docs
 
 底层Android和IOS系统的接口，已经被Ionic框架封装。
@@ -27,6 +29,10 @@ Xcode 模拟IOS
 https://marketplace.visualstudio.com/items?itemName=ionic.ionic
 
 还是命令行粗暴。。。
+
+android调试桥，可以通过插件**ionic**配置。
+
+https://developer.android.com/studio/command-line/adb?hl=zh-cn
 
 ![image-20221002233445818](readme.assets/image-20221002233445818.png)
 
