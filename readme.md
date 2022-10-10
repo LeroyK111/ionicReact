@@ -2,8 +2,6 @@
 
 归根结底，它只是 React。Ionic React 使用开放的 Web 标准和内置的浏览器功能，因此它与数以百万计的 Web 库中的任何一个都兼容。
 
-
-
 官网地址：https://ionicframework.com/docs
 
 底层Android和IOS系统的接口，已经被Ionic框架封装。
@@ -68,6 +66,30 @@ https://ion.link/docs
 https://ion.link/enterprise-edition
 ```
 
+### 路由IonReactRouter
+
+这里我们使用官方二次封装的react-router路由。
+
+https://ionicframework.com/docs/react/navigation
+
+```
+我们使用模板时，已经默认安装了
+```
+
+
+
+### 状态MobX
+
+这里我们使用MobX进行全局状态管理。
+
+https://zh.mobx.js.org/README.html
+
+```
+
+```
+
+
+
 ### 基于ionic的高阶HOC组件
 
 #### root根组件App.tsx
@@ -86,19 +108,57 @@ https://ion.link/enterprise-edition
 
 ![image-20221003194929069](readme.assets/image-20221003194929069.png)
 
+
+
+
+
+
+
+
+
+
+
 ## 构建原生App
 
 ```
 # 添加电容器
 ionic integrations enable capacitor
-# 开始构建
+# 开始构建build
 ionic build
-# 添加平台
-ionic capacitor add android
-ionic capacitor add ios
-# 调试
-
-# 打包
-
+# 安装安卓调试包
+npx ionic cap add android
+# 执行安卓调试，需要带参数
+npx ionic cap run android
+# 执行web调试，需要带参数
+npx ionic server
 ```
 
+
+
+
+
+
+
+
+
+
+
+## 应用常用插件
+
+### 启动图片
+
+
+
+### 应用图标
+
+### 前景图标
+
+### 后景图标
+
+
+
+### 微信sdk
+
+### 支付宝sdk
+
+### 云闪付sdk

@@ -4,5 +4,15 @@
   // 调试专用https://code.visualstudio.com/docs/editor/debugging
   // 预定义变量https://code.visualstudio.com/docs/editor/variables-reference
   "version": "1.0.0",
-  "configurations": []
+  "configurations": [
+    {
+      // !如果想集成npm or npx的启动方法，则需要配置node
+      // !不集成，则可以手动启动框架，然后在F5监听网页变化
+      "name": "webDebug",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:3000",
+    },
+    // * 官方给的vscode-ionic插件好用，命令行也好用，这里就先不配置其他的东西了
+  ]
 }
