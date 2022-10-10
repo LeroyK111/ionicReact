@@ -85,8 +85,11 @@ https://ionicframework.com/docs/react/navigation
 https://zh.mobx.js.org/README.html
 
 ```
-
+# 安装mobx
+npm install --save mobx
 ```
+
+
 
 
 
