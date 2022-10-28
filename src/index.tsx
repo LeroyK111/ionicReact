@@ -3,14 +3,15 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+import MyComponent from "./mobx/Store";
 
 const container = document.getElementById("root");
 const root = createRoot(container!);
 
 root.render(
-  // <React.StrictMode>
-  <App />
-  // </React.StrictMode>
+  <MyComponent>
+    <App />
+  </MyComponent>
 );
 
 // If you want your app to work offline and load faster, you can change

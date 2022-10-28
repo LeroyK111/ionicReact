@@ -52,48 +52,51 @@ import "@ionic/react/css/display.css";
 /* 全局样式主题 */
 import "./theme/variables.css";
 
+
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    {/* 等价于BrowserRouter */}
-    <IonReactRouter>
-      {/* 调用一个导航栏 */}
-      <IonTabs>
-        {/* 包装导航页面 */}
-        <IonRouterOutlet>
-          <Route exact path="/tab1">
-            {/* tab1还有嵌套路由 */}
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2" component={Tab2}></Route>
-          {/* 动态路由 */}
-          <Route exact path="/tab2/:myid" component={Tab2}></Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route path={"/new"} component={NewItem}></Route>
-          <Route exact path="">
-            <Redirect to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = (props: any) => {
+  return (
+    <IonApp>
+      {/* 等价于BrowserRouter */}
+      <IonReactRouter>
+        {/* 调用一个导航栏 */}
+        <IonTabs>
+          {/* 包装导航页面 */}
+          <IonRouterOutlet>
+            <Route exact path="/tab1">
+              {/* tab1还有嵌套路由 */}
+              <Tab1 />
+            </Route>
+            <Route exact path="/tab2" component={Tab2}></Route>
+            {/* 动态路由 */}
+            <Route exact path="/tab2/:myid" component={Tab2}></Route>
+            <Route path="/tab3">
+              <Tab3 />
+            </Route>
+            <Route path={"/new"} component={NewItem}></Route>
+            <Route exact path="">
+              <Redirect to="/tab1" />
+            </Route>
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="tab1" href="/tab1">
+              <IonIcon icon={triangle} />
+              <IonLabel>Tab 1</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="tab2" href="/tab2">
+              <IonIcon icon={ellipse} />
+              <IonLabel>Tab 2</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="tab3" href="/tab3">
+              <IonIcon icon={square} />
+              <IonLabel>Tab 3</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;

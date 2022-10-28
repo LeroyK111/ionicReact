@@ -80,14 +80,73 @@ https://ionicframework.com/docs/react/navigation
 
 ### 状态MobX
 
-这里我们使用MobX进行全局状态管理。
+这里我们使用MobX进行全局状态管理。我们使用
 
 https://zh.mobx.js.org/README.html
 
 ```
-# 安装mobx
+# 只安装mobx，则我们需要自行构建响应式数据流
 npm install --save mobx
+# 推荐使用react-mobx or mobx-react-lite 选其一即可构建响应式数据流
+# 支持class和function组件
+npm i mobx-react
+# lite只支持hook函数式组件
+npm i mobx-react-lite
 ```
+
+#### 创建可观察对象
+
+三种方法：
+
+class类方法：可以配置的相当细，但是麻烦！
+
+**计算属性computed**
+
+**观测属性observable**
+
+**动作方法action**
+
+**异步方法**
+
+![image-20221028184258566](readme.assets/image-20221028184258566.png)
+
+function函数方法：常用方法
+
+![image-20221028184323167](readme.assets/image-20221028184323167.png)
+
+object对象方法
+
+![image-20221028184516511](readme.assets/image-20221028184516511.png)
+
+##### ★异步转同步
+
+不需要额外的插件，只需要
+
+
+
+
+
+
+
+##### 用法：
+
+1.只用初始值
+
+
+
+2.使用props进行传参
+
+3.使用context进行传参
+
+
+
+
+
+
+
+
+
+
 
 
 

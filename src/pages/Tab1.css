@@ -1,0 +1,18 @@
+.ripple-parent {
+  position: relative;
+  overflow: hidden;  
+  border: 1px solid #ddd;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+}
+
+
+.custom-ripple {
+  color: red;
+}
