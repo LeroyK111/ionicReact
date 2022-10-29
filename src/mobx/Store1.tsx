@@ -12,19 +12,19 @@ import {
   flow,
   autorun,
 } from "mobx";
-import { ResponseGenerator } from "../react-app-env";
 
-class Doubler {
-  value: 2;
+class Store1 {
+  value;
 
   constructor(value: any) {
+    this.value = value;
+
     // 老方法，包装
     makeObservable(this, {
       value: observable,
       // 老方法, 包装计算属性
       double: computed,
       increment: action,
-      fetch: flow,
       // 锁定方法，可以更安全的调用
       lockAction: action.bound,
     });
@@ -47,12 +47,6 @@ class Doubler {
   increment() {
     this.value++;
   }
-
-  // 老方法，异步转同步
-  *fetch() {
-    const response: ResponseGenerator = yield fetch("url/api");
-    this.value = response.json();
-  }
 }
 
-export default Doubler;
+export default Store1;

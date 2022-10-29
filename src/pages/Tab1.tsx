@@ -23,7 +23,8 @@ import {
   IonIcon,
 } from "@ionic/react";
 import { add } from "ionicons/icons";
-import { useContext } from "react";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { useContext, useEffect, useState } from "react";
 // 使用钩子跳转页面
 import { useHistory } from "react-router-dom";
 // 引入原始组件
@@ -32,6 +33,9 @@ import "./Tab1.css";
 
 // 引入全局状态树
 import { myContext } from "../mobx/Store";
+
+// 引入mobx生命周期监听
+// import { autorun } from "mobx";
 // 引入监听mobx-react专用监听对象
 import { Observer } from "mobx-react";
 
@@ -42,6 +46,19 @@ const Tab1: React.FC = (props: any) => {
 
   // 手动构建单向数据流
   // const [first, setfirst] = useState(store.value);
+
+  // 引入mobx生命周期
+  // useEffect(() => {
+  //   const unauto = autorun(()=>{
+  //     setfirst(store.value)
+  //   })
+  
+  //   return () => {
+  //     unauto()
+  //   }
+  // }, [])
+  
+  
 
   return (
     <IonPage>
@@ -81,9 +98,6 @@ const Tab1: React.FC = (props: any) => {
             store.increment();
             // 手动实现响应式
             // setfirst(store.value);
-
-            console.log(store.msg);
-            
           }}
         >
           {/* 自动响应式hoc */}
@@ -94,7 +108,12 @@ const Tab1: React.FC = (props: any) => {
           ></IonRippleEffect>
         </div>
         <Observer>{() => store.obj.b.c}</Observer>
-        
+        <br />
+        {/* 测试异步初始状态 */}
+        {store.msg.msg}
+        {store.test.msg}
+        <Observer>{() => store.msg.msg}</Observer>
+        <Observer>{() => store.test.msg}</Observer>
         {/* 添加了一个按钮 */}
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
           <IonFabButton

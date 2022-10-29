@@ -5,7 +5,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 import ExploreContainer from "../components/ExploreContainer";
 import "./Tab2.css";
@@ -14,10 +14,6 @@ import "./Tab2.css";
 import { myContext } from "../mobx/Store";
 
 const Tab2: React.FC = (props: any) => {
-  useEffect(() => {
-    console.log(props.match.params);
-  }, []);
-
   const store = useContext(myContext);
 
   return (
@@ -35,7 +31,8 @@ const Tab2: React.FC = (props: any) => {
         </IonHeader>
         <h1>{props.match.params.myid}</h1>
         <span>
-          测试tab1页面的数据能否传入到tab2: <br /><b>{store.double}</b>{" "}
+          测试tab1页面的数据能否传入到tab2: <br />
+          <b>{store.double}</b>{" "}
         </span>
         <ExploreContainer name="Tab 2 page" />
       </IonContent>

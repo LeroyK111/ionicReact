@@ -78,9 +78,19 @@ https://ionicframework.com/docs/react/navigation
 
 
 
+
+
+
+
+
+
+
+
 ### 状态MobX
 
-这里我们使用MobX进行全局状态管理。我们使用
+这里我们使用MobX进行全局状态管理。**天生Proxy，轻松实现深度监听。**
+
+![image-20221029153032287](readme.assets/image-20221029153032287.png)
 
 https://zh.mobx.js.org/README.html
 
@@ -96,17 +106,17 @@ npm i mobx-react-lite
 
 #### 创建可观察对象
 
-三种方法：
-
-class类方法：可以配置的相当细，但是麻烦！
-
 **计算属性computed**
 
 **观测属性observable**
 
 **动作方法action**
 
-**异步方法**
+**异步方法async**
+
+三种方法：
+
+class类方法：可以配置的相当细，但是麻烦！
 
 ![image-20221028184258566](readme.assets/image-20221028184258566.png)
 
@@ -120,35 +130,75 @@ object对象方法
 
 ##### ★异步转同步
 
-不需要额外的插件，只需要
+不需要额外的插件。
 
-
-
-
-
-
+![image-20221029152438040](readme.assets/image-20221029152438040.png)
 
 ##### 用法：
 
-1.只用初始值
+**默认脚手架都是react**。毕竟vue的vuex和pinia更好用。。。
 
+1.只用初始值(没必要用)
 
+其实毫无意义，react-class组件直接定义state，react-function组件直接定义useState。
 
-2.使用props进行传参
+不管使用哪种方法，创建的可观察对象。
 
-3.使用context进行传参
+```
+import store from "../mobx/store"
+// 如果store是class类
+const store = new store(*args)
+store.value
 
+// 如果store是function函数
+const store = store()
+store.value()
 
+// 如果store是object对象
+store.value
+```
 
+2.使用props进行传参（用的少）
 
+![image-20221029153247876](readme.assets/image-20221029153247876.png)
 
+3.使用context进行传参（推荐方法）
 
+**实现了全局状态共享，但是组件内部还需要自行监听store的属性变化，才能重新渲染对应组件。**
 
+![image-20221029153649909](readme.assets/image-20221029153649909.png)
 
+★手动实现响应式组件
 
+1.手动更新单向数据流
 
+![image-20221029154709602](readme.assets/image-20221029154709602.png)
 
+![image-20221029154807379](readme.assets/image-20221029154807379.png)
 
+2.利用autorun进行自动更新
+
+![image-20221029155622132](readme.assets/image-20221029155622132.png)
+
+3.利用Observer进行自动更新（官方推荐）
+
+![image-20221029155852608](readme.assets/image-20221029155852608.png)
+
+#### react专用插件
+
+![image-20221029151432858](readme.assets/image-20221029151432858.png)
+
+##### ★HOC高阶组件context嵌套用法
+
+这个是最常用的方案，实现全局组件的响应式。
+
+![image-20221029160117582](readme.assets/image-20221029160117582.png)
+
+![image-20221029160154007](readme.assets/image-20221029160154007.png)
+
+##### 多Store合并
+
+![image-20221029151627265](readme.assets/image-20221029151627265.png)
 
 
 
