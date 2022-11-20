@@ -24,46 +24,251 @@ Xcode 模拟IOS
 
 ## 安装vscode插件
 
-https://marketplace.visualstudio.com/items?itemName=ionic.ionic
+https://ionicframework.com/docs/intro/vscode-extension
 
-还是命令行粗暴。。。
+推荐使用插件，命令行也行！
 
 android调试桥，可以通过插件**ionic**配置。
-
-https://developer.android.com/studio/command-line/adb?hl=zh-cn
 
 ![image-20221002233445818](readme.assets/image-20221002233445818.png)
 
 ## 基于react开发App
 
+支持cdn开发
+
+```
+<script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+
+<script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+```
+
+支持react-cli and vue-cli等框架脚手架整合开发
+
+https://ionicframework.com/docs/intro/cdn
+
+**推荐使用ionic cli命令行进行直接开发**
+
 ```
 # 安装脚手架，同样是基于脚手架开发的。
 $ npm uninstall -g ionic
-$ npm install -g @ionic/cli
+$ npm install -g @ionic/cli native-run
+
+# 支持步次配置类似npm init
+$ ionic start
 
 # 安装模板，可以通过ionic start --help
-ionic start myApp tabs --type react
+# 选项卡tabs 侧边菜单sidemenu 单页空项目blank
+$ ionic start myApp tabs --type react|vue|angular|ionic1
 
-# 启动命令
-$ ionic start
+# 查看所有可用模板
+ionic start --list
+
+# web端调试
 $ ionic serve
+$ npm start
 ```
 
-安装完毕
+基础目录
 
 ```
-进入项目
-cd .\ionicReact
-启动服务
-ionic serve
-构建电容器
-ionic capacitor add 
-生成图标和启动画面
-cordova-res --skip-config --copy
-原生组件
-https://ion.link/docs
-企业级功能
-https://ion.link/enterprise-edition
+src/
+├── app/
+├── assets/
+├── environments/
+├── theme/
+├── global.scss
+├── index.html
+├── main.ts
+├── polyfills.ts
+├── test.ts
+└── zone-flags.ts
+```
+
+```
+src/
+└── app/
+    ├── app-routing.module.ts
+    ├── app.component.html
+    ├── app.component.spec.ts
+    ├── app.component.ts
+    └── app.module.ts
+```
+
+如果你使用了模板，那就是模板的目录。
+
+shell命令：
+
+https://ionicframework.com/docs/cli
+
+```
+# 提示选择生成的新功能
+$ ionic generate
+? What would you like to generate?
+❯ page
+  component
+  service
+  module
+  class
+  directive
+  guard
+```
+
+### capacitor框架
+
+为了构建Android and IOS 应用，我们还需要引入新的框架capacitorjs
+
+https://capacitorjs.com/docs/getting-started/with-ionic
+
+```
+# 这个必须在原有ionic project的基础上，开启capacitor功能
+$ ionic integrations enable capacitor
+```
+
+如果是原生的html+css+js的项目，则还需要参考：
+
+https://capacitorjs.com/docs/getting-started
+
+方式一：
+
+```
+# 直接创建新的capacitor项目：会问问题
+$ npm init @capacitor/app
+```
+
+方式二：
+
+```
+# 在已有的老项目上，导入capacitor
+$ npm i @capacitor/core
+$ npm i -D @capacitor/cli
+
+# 初始化：会问问题
+$ npx cap init
+
+# 安装平台包（前提是安装了xcode and Android studio）
+$ npm i @capacitor/android @capacitor/ios
+$ npx cap add android
+$ npx cap add ios
+
+# 同步到android and ios包中
+npx cap sync
+```
+
+#### 基础插件
+
+```
+$ npm i @capacitor/app @capacitor/haptics @capacitor/keyboard @capacitor/status-bar
+```
+
+常用capacitor插件已放入本文[最后](#应用常用插件)。如图标，闪图，摄像头，蓝牙，分享，定位等等常用功能。
+
+#### 添加移动平台到应用程序
+
+```
+$ ionic capacitor add android
+$ ionic capacitor add ios
+```
+
+```
+src/
+├── xxx
+└── xxxx
+android/
+├── xxx
+└── xxxx
+ios/
+├── xxx
+└── xxxx
+```
+
+#### 其他常用命令
+
+- [`ionic capacitor add`](https://ionicframework.com/docs/cli/commands/capacitor-add)
+
+添加平台包到根目录中
+
+```
+$ ionic capacitor add android|ios
+```
+
+- [`ionic capacitor build`](https://ionicframework.com/docs/cli/commands/capacitor-build?_gl=1*rumdbm*_ga*MTc3ODkxMzg2NS4xNjYzODU3NDgx*_ga_REH9TJF6KF*MTY2ODk3MzgzNC44Mi4xLjE2Njg5NzYyODAuMC4wLjA.)
+
+将web资源赋值到 android|ios包中
+
+```
+$ ionic build
+$ ionic capacitor build android
+```
+
+后续就是签名和打包了
+
+- [`ionic capacitor run`](https://ionicframework.com/docs/cli/commands/capacitor-run)
+
+执行模拟器。。。
+
+```
+$ ionic capacitor run [options]
+```
+
+https://ionicframework.com/docs/cli/commands/capacitor-run
+
+可携带参数：例如
+
+```
+$ ionic capacitor run android -l --external
+```
+
+- [`ionic capacitor open`](https://ionicframework.com/docs/cli/commands/capacitor-open)
+
+```
+$ ionic capacitor open android
+```
+
+打开平台编辑器[具体方法](#构建原生App)：
+
+1.生成签名文件
+
+2.使用签名文件，构造app
+
+#### **特殊命令**
+
+合并命令：等价于ionic build + ionic capacitor build
+
+```
+$ ionic capacitor copy [options]
+```
+
+- [`ionic capacitor sync`](https://ionicframework.com/docs/cli/commands/capacitor-sync)
+
+合并命令：等价于ionic capacitor copy + ionic capacitor update
+
+```
+$ ionic capacitor sync [options]
+```
+
+```
+# 更新ionic的依赖项和插件
+$ ionic capacitor update [options]
+```
+
+获取**ionic.config.json**中的配置值
+
+```
+$ ionic config get [options]
+```
+
+设置**ionic.config.json**中的配置值
+
+```
+$ ionic config set [options]
+```
+
+删除**ionic.config.json**中的配置值
+
+```
+$ ionic config unset [options]
 ```
 
 ### 路由IonReactRouter
@@ -220,57 +425,160 @@ store.value
 
 ![image-20221003194929069](readme.assets/image-20221003194929069.png)
 
-
-
-
-
-
-
-
-
-
-
 ## 构建原生App
 
+官方也支持cloud 需要先注册账号！
+
+https://dashboard.ionicframework.com/personal/apps
+
+这里我们就不使用组合命令了，一步步来：
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 包执行器npx语法
+
+更好用的shell语法
+
 ```
-# 添加电容器
-ionic integrations enable capacitor
-# 开始构建build
-ionic build
+$ npx ionic --help
+$ npx ionic cap --help
+
+举例：
 # 安装安卓调试包
-npx ionic cap add android
+$ npx ionic cap add android
 # 执行安卓调试，需要带参数
-npx ionic cap run android
+$ npx ionic cap run android
 # 执行web调试，需要带参数
-npx ionic server
+$ npx ionic serve
 ```
-
-
-
-
-
-
-
-
-
-
 
 ## 应用常用插件
 
-### 启动图片
+https://capacitorjs.com/docs/plugins
 
+https://capacitorjs.com/docs/cordova/migrating-from-cordova-to-capacitor
 
+**这里有巨坑！！**
+
+官方文档更新的不够及时，很多插件其实已经被弃用，npm install xxx 存在大量的坑。
+
+| 插件      | 状态                 | 官网                                   |
+| --------- | -------------------- | -------------------------------------- |
+| Capacitor | 官方维护插件         | https://capacitorjs.com/docs/apis      |
+|           | 社区维护插件         | https://github.com/capacitor-community |
+| Cordova   | 官方不推荐。依然兼容 | https://cordova.apache.org/plugins/    |
 
 ### 应用图标
 
-### 前景图标
+坑点：依赖包需要挂梯子！Dependent: [sharp](https://www.npmjs.com/package/cordova-res) [libvips](https://github.com/libvips/libvips)
 
-### 后景图标
+https://github.com/ionic-team/capacitor-assets
+
+```
+# 不推荐
+npm install -g cordova-res
+# 官方推荐
+npm install @capacitor/assets
+```
+
+这里我们使用简易模式：
+
+```
+# 项目root中创建assets/resources文件夹
+assets/resources
+├── logo.png/icon.png
+└── logo-dark.png/icon-dark.png
+src/
+├── xxx
+└── xxxx
+public/
+├── xxx
+└── xxxx
+...
+```
+
+```
+# 执行构筑命令
+npx capacitor-assets generate --iconBackgroundColor '#eeeeee' --iconBackgroundColorDark '#222222' --splashBackgroundColor '#eeeeee' --splashBackgroundColorDark '#111111'
+```
+
+```
+--iosProject
+iOS项目的路径（默认ios/App）
+--androidProject
+Android 项目的路径（默认android）
+--assetPath <path>
+项目资产目录的路径。默认情况下将按顺序检查"assets"和目录"resources"
+--iconBackgroundColor
+为光模式生成图标层时使用的背景颜色（十六进制值）（默认#ffffff）
+--iconBackgroundColorDark
+为暗模式（支持时）生成图标层时使用的背景颜色（十六进制值）（默认#111111）
+--splashBackgroundColor
+生成初始屏幕时使用的背景颜色（十六进制值）（默认#ffffff）
+--splashBackgroundColorDark
+为暗模式生成启动画面时使用的背景颜色（十六进制值）（如果支持）（默认#111111）
+--logoSplashTargetWidth
+从单个徽标文件生成初始屏幕时将徽标设置为的特定宽度（默认情况下不使用，徽标按比例缩放为初始屏幕的百分比，请参阅--logoSplashScale）
+--logoSplashScale 
+从单个徽标文件生成启动画面时应用于徽标的比例乘数（默认值0.2：）
+--ios
+明确运行 iOS 资产生成。使用平台标志使平台列表独占。
+--android 
+显式运行 Android 资产生成。使用平台标志使平台列表独占。
+--pwa
+(默认)显式运行 Android 资产生成。使用平台标志使平台列表独占。
+```
+
+自定义模式：
+
+```
+assets/
+├── icon-only.png
+├── icon-foreground.png
+├── icon-background.png
+├── splash.png
+└── splash-dark.png
+```
+
+```
+npx capacitor-assets generate --pwa
+```
+
+### 闪图广告
+
+一般用作开屏广告！
+
+```
+npm install @capacitor/splash-screen
+```
+
+
+
+
 
 
 
 ### 微信sdk
 
+
+
 ### 支付宝sdk
 
+
+
 ### 云闪付sdk
+
+
+
+## 创建插件
+
