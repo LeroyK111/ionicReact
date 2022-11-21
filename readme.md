@@ -273,23 +273,18 @@ $ ionic config unset [options]
 
 ### 路由IonReactRouter
 
-这里我们使用官方二次封装的react-router路由。
+这里我们使用官方二次封装的react-router路由IonReactRouter。
 
 https://ionicframework.com/docs/react/navigation
 
 ```
-我们使用模板时，已经默认安装了
+# 我们使用模板时，已经默认安装了.
+# 使用的还是react-router-dom@5中的组件
+import { IonReactRouter } from "@ionic/react-router";
+import { Redirect, Route } from "react-router-dom";
 ```
 
-
-
-
-
-
-
-
-
-
+完美兼容react-router-dom@5中的路由语法。
 
 ### 状态MobX
 
@@ -506,6 +501,38 @@ $ npx ionic cap run android
 $ npx ionic serve
 ```
 
+## PWA渐进式应用
+
+
+
+
+
+## ionic生命周期
+
+
+
+
+
+## 虚拟滚动
+
+
+
+
+
+
+
+## 数据存储
+
+https://ionicframework.com/docs/react/storage
+
+加密存储sqllite
+
+
+
+非加密存储storage
+
+
+
 ## 应用常用插件
 
 https://capacitorjs.com/docs/plugins
@@ -608,7 +635,33 @@ npm install @capacitor/splash-screen
 
 
 
+### 走马灯
 
+官方地址：[Swiper.js](http://swiperjs.com/)
+
+
+
+### 相机
+
+
+
+### 蓝牙
+
+
+
+### 状态栏
+
+
+
+### 推送通知
+
+
+
+### 设备信息
+
+
+
+### 地理定位
 
 
 
@@ -626,3 +679,4 @@ npm install @capacitor/splash-screen
 
 ## 创建插件
 
+https://capacitorjs.com/docs/apis/keyboard#
