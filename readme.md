@@ -431,19 +431,63 @@ store.value
 
 https://dashboard.ionicframework.com/personal/apps
 
-这里我们就不使用组合命令了，一步步来：
+```
+# 安装两个平台包
+$ npm i @capacitor/android @capacitor/ios
+```
 
+### 模拟器测试
 
+具体用法，需要查看官网内容
 
+```
+1.安装包
+npx ionic cap add android|ios
 
+2.构建
+npx ionic cap build
 
+3.这里我们存在图标插件(根据参数设置)
+npx capacitor-assets generate <options>
 
+4.同步一下插件内容
+npx ionic cap sync
 
+5.启动测试(-l重新加载，--target=目标虚拟机，--external开发服务器，公共地址--public-host=)
+npx ionic cap run android -l --external --target=ionicReact --public-host=192.168.1.26
+```
 
+![image-20221121080203183](readme.assets/image-20221121080203183.png)
 
+### 签名
 
+打开对应平台。
 
+https://developer.android.com/studio/publish/app-signing?hl=zh-cn#generate-key
 
+```
+$ npx ionic cap open android|ios
+```
+
+![image-20221121094424238](readme.assets/image-20221121094424238.png)
+
+![image-20221121094726829](readme.assets/image-20221121094726829.png)
+
+![image-20221121095931978](readme.assets/image-20221121095931978.png)
+
+生成密钥
+
+![image-20221121095825089](readme.assets/image-20221121095825089.png)
+
+![image-20221121100115417](readme.assets/image-20221121100115417.png)
+
+点击完成，即生成app-release.apk了
+
+### 构筑app
+
+![image-20221121100351912](readme.assets/image-20221121100351912.png)
+
+带有签名的正式版app已经构建完毕，上线各种应用市场即可。
 
 ### 包执行器npx语法
 

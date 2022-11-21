@@ -43,7 +43,7 @@ function createDoubler(value: number) {
 
     // !直接异步转同步
     async req() {
-      const res = await axios.get("http://127.0.0.1:3333");
+      const res = await axios.get("http://192.168.1.26:3333");
       runInAction(() => {
         this.msg = res.data;
       });
@@ -51,7 +51,7 @@ function createDoubler(value: number) {
 
     // !本身就可以实现异步更新
     run() {
-      fetch("http://127.0.0.1:3333/api", { method: "POST" })
+      fetch("http://192.168.1.26:3333/api", { method: "POST" })
         .then((res) => res.json())
         .then((data) => {
           runInAction(() => {
