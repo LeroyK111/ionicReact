@@ -22,6 +22,7 @@ Xcode 模拟IOS
 
 4.版本管理git
 
+
 ## 安装vscode插件
 
 https://ionicframework.com/docs/intro/vscode-extension
@@ -680,3 +681,11 @@ npm install @capacitor/splash-screen
 ## 创建插件
 
 https://capacitorjs.com/docs/apis/keyboard#
+
+
+## 其他app交互
+
+App 和 H5 通信App 和 H5 通信和 JSBridge 其实是两个概念，不要混淆。App 和 H5 通信有多种，而 JSBridge 只是其中能实现 App 和 H5 通信的一种方式。常见的 App 和 H5 通信方式：URL Scheme
+URL Scheme 是一种自定义的URL协议，允许 H5 页面通过链接到特定的格式触发 APP 内部的操作。例如，当H5页面中的链接被点击时，可以利用URL Scheme 唤起 APP 并执行预定义的动作，或者传递参数给 APP。这种方式适用于简单的跳转和数据传递，但功能有限，且用户体验可能因需要先打开系统浏览器再跳转至 APP 而受到影响。developer.baidu.com/article/det…[1]postMessage是HTML5引入的一个API，它允许来自不同源的脚本在浏览器环境中进行异步通信。在原生APP嵌入H5页面的场景下，可以利用postMessage来实现两者间的双向通信。
+
+juejin.cn/post/729442…[2]APP与H5之间可以通过WebSocket进行通信。WebSocket是一种在单个TCP连接上进行全双工通信的协议，它提供了浏览器和服务器之间的低延迟、持久化的连接，非常适合实时数据传输场景。JSBridge：JSBridge 的核心目的就是搭建一个桥梁，让运行在 WebView 中的 JavaScript 代码能够与宿主的原生应用程序（比如 Android 或 iOS 应用）互相通讯。本文的重点在于介绍第4种 App 和 H5 的通信方式即 JSBridge。为了彻底搞懂大家说的 JSBridge 是什么，我在网上翻阅了很多博客，然后自己摸摸索索，把实现 JSBridge 的代码写了一遍，这样直接看代码解释起来会更清晰。
